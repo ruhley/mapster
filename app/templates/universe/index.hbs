@@ -1,0 +1,35 @@
+{{partial 'system/nav'}}
+
+{{#if model.universe}}
+    <h2 class='well'>{{model.universe.name}} ({{model.universe.abbreviation}})</h2>
+
+    <div class='row'>
+        <div class='col-md-6 col-sm-12'>
+            {{#if model.universe.description}}
+            <p>{{model.universe.description}}</p>
+            {{/if}}
+
+            {{#if model.universe.link}}
+                <p>For more information visit - {{{model.universe.linkTo}}}</p>
+            {{/if}}
+        </div>
+
+        <div class='col-md-6 col-sm-12 image-detail'>
+            {{{model.universe.imageDisplay}}}
+        </div>
+    </div>
+
+    <div class='row'>
+        {{#each media in model.media}}
+            <div class='col-md-3 col-xs-6 entity'>
+                {{#link-to 'universe.media' media.url}}
+                    {{{media.imageDisplay}}}
+                    <p>{{media.name}}</p>
+                {{/link-to}}
+            </div>
+        {{/each}}
+    </div>
+
+{{else}}
+    The universe with the name {{name}} could not be found.
+{{/if}}

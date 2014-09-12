@@ -1,0 +1,12 @@
+{{partial 'system/nav'}}
+
+<h2 class='well'>Welcome to Mapster</h2>
+
+<div class='row'>
+    {{#each universe in model.universes}}
+        {{#link-to 'universe' universe.url tag='div' class='col-md-3 col-xs-6 entity'}}
+            {{{universe.imageDisplay}}}
+            <p>{{universe.name}}</p>
+        {{/link-to}}
+    {{/each}}
+</div>
