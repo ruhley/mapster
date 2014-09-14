@@ -1,0 +1,28 @@
+{{partial 'system/nav'}}
+{{debug item}}
+{{#if item}}
+    <h2 class='well'>{{item.name}} ({{item.abbreviation}})</h2>
+
+    <div class='row'>
+        <div class='col-md-6 col-sm-12'>
+            {{#if item.description}}
+                <p>{{item.description}}</p>
+            {{/if}}
+
+            {{#if item.link}}
+                <p>For more information visit - {{{item.linkTo}}}</p>
+            {{/if}}
+        </div>
+
+        <div class='col-md-6 col-sm-12 image-detail'>
+            {{{item.imageDisplay}}}
+        </div>
+    </div>
+
+    <div class='row'>
+        {{item-list items=items link='universe.media'}}
+    </div>
+
+{{else}}
+    The universe with the name {{name}} could not be found.
+{{/if}}

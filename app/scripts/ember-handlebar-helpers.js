@@ -63,7 +63,7 @@ Ember.Handlebars.registerHelper('compare', function(lvalue, operator, rvalue, op
     operator = Ember.Handlebars.get(this, operator, options) || operator;
     rvalue = Ember.Handlebars.get(this, rvalue, options) || rvalue;
 
-
+    console.log(arguments);
     operators = {
         '==': function(l, r) {
             return l == r;

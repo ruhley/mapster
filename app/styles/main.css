@@ -1,0 +1,32 @@
+#page-wrapper {
+  margin-top: 55px;
+}
+
+.entity {
+  padding: 0.5em;
+}
+.entity a {
+  color: #05375E;
+  display: block;
+  padding: 0.5em;
+  border: 1px solid #DDDDDD;
+  box-shadow: 1px 1px 5px 0 #A2958A;
+  text-align: center;
+  cursor: pointer;
+}
+.entity a:hover {
+  background-color: #CCCCCC;
+  box-shadow: 2px 2px 5px 0 #333333;
+}
+.entity img {
+  margin: 0 auto;
+}
+.entity img,
+.entity .fa-stack {
+  height: 150px;
+}
+
+.image-detail img {
+  height: 200px;
+  float: right;
+}

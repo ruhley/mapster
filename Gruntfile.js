@@ -28,6 +28,19 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        sass: {
+            options: {
+                sourcemap: 'none',
+                style: 'expanded'
+            },
+            app: {
+                expand: true,
+                cwd: '<%= yeoman.app %>/sass',
+                src: ['*.scss'],
+                dest: '<%= yeoman.app %>/styles',
+                ext: '.css'
+            }
+        },
         jsbeautifier: {
             files: ['<%= yeoman.app %>/scripts/**/*.js', '!<%= yeoman.app %>/scripts/templates.js']
         },
@@ -67,6 +80,10 @@ module.exports = function (grunt) {
             emberTemplates: {
                 files: '<%= yeoman.app %>/templates/**/*.hbs',
                 tasks: ['emberTemplates']
+            },
+            sass: {
+                files: '<%= yeoman.app %>/sass/**/*.scss',
+                tasks: ['sass', 'includeSource']
             },
             //neuter: {
             //    files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],

@@ -1,0 +1,10 @@
+{{#each item in items}}
+    {{#compare _view.contentIndex '<=' limit}}
+        <div class='col-md-3 col-xs-6 entity'>
+            {{#link-to link item.url}}
+                {{{item.imageDisplay}}}
+                <p>{{item.name}}</p>
+            {{/link-to}}
+        </div>
+    {{/compare}}
+{{/each}}
