@@ -1,0 +1,27 @@
+<div class='row'>
+    <div class='col-sm-12'>
+        <div class='col-md-6'>
+            <select id='map-places-filter' class='form-control'>
+                <option value='nation'>Nations</options>
+            </select>
+        </div>
+        <div class='col-md-6'>
+            <input type='text' id='map-places-search' class='form-control' placeholder='Filter the list'>
+        </div>
+    </div>
+</div>
+
+<div class='col-sm-12' id='map-places-list'>
+    <ul class='list-group'>
+        <li class='list-group-item'>
+            <a href='#map-places-nations' data-toggle='collapse'>Nations</a>
+            <ul id='map-places-nations' class='list-group collapse'>
+                {{#each place in model.places}}
+                    <li id='map-places-list-{{unbound place.id}}' class='list-group-item place' {{bind-attr data-id=place.id}}>{{place.name}}</li>
+                {{/each}}
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class='clearfix'></div>

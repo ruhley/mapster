@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         sass: {
             options: {
-                sourcemap: 'none',
+                //sourcemap: 'none',
                 style: 'expanded'
             },
             app: {

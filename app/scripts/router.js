@@ -2,8 +2,24 @@ App.Router.map(function() {
     this.resource('universe', {
         path: '/:universe'
     }, function() {
+        this.route('items', {
+            path: '/:type'
+        });
+
+        this.route('map', {
+            path: 'map/:id/:map'
+        });
+
         this.route('media', {
-            path: 'media/:media'
+            path: 'media/:id/:media'
+        });
+
+        this.route('character', {
+            path: 'character/:id/:character'
+        });
+
+        this.route('chapter', {
+            path: 'chapter/:id/:chapter'
         });
     });
 });

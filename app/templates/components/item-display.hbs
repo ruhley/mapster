@@ -1,7 +1,12 @@
 {{partial 'system/nav'}}
-{{debug item}}
+
 {{#if item}}
-    <h2 class='well'>{{item.name}} ({{item.abbreviation}})</h2>
+    <h2 class='well'>
+        {{item.name}}
+        {{#if item.abbreviation}}
+            ({{item.abbreviation}})
+        {{/if}}
+    </h2>
 
     <div class='row'>
         <div class='col-md-6 col-sm-12'>
@@ -18,11 +23,6 @@
             {{{item.imageDisplay}}}
         </div>
     </div>
-
-    <div class='row'>
-        {{item-list items=items link='universe.media'}}
-    </div>
-
 {{else}}
     The universe with the name {{name}} could not be found.
 {{/if}}

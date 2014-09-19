@@ -1,10 +1,9 @@
-{{#each item in items}}
-    {{#compare _view.contentIndex '<=' limit}}
-        <div class='col-md-3 col-xs-6 entity'>
-            {{#link-to link item.url}}
-                {{{item.imageDisplay}}}
-                <p>{{item.name}}</p>
-            {{/link-to}}
-        </div>
-    {{/compare}}
-{{/each}}
+{{#if items}}
+    {{#each item in items}}
+        {{#compare _view.contentIndex '<' limit}}
+            {{item-list-item item=item link=link}}
+        {{/compare}}
+    {{/each}}
+{{else}}
+    None found
+{{/if}}

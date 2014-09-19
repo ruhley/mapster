@@ -3,7 +3,9 @@ App.PlaceType = DS.Model.extend(App.ModelMixin, {
     description: DS.attr('string'),
     image: DS.attr('string'),
     link: DS.attr('string'),
-    created: DS.attr('date')
+    created: DS.attr('date'),
+
+    place: DS.hasMany('place')
 });
 
 App.PlaceTypeVersion = App.Chapter.extend({

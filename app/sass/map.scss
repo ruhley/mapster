@@ -1,0 +1,99 @@
+.map-wrapper {
+    position: relative;
+    padding: 5px;
+    user-select: none;
+
+    .map-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        pointer-events: none;
+        box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.2);
+        content: '';
+    }
+
+    .map-container {
+        position: relative;
+        overflow: hidden;
+
+        .map-drag {
+            cursor: move;
+
+            .map-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                .Nation {
+                    pointer-events: all;
+                    fill: none;
+                    stroke: rgba(200, 25, 25, 0.75);
+                    stroke-width: 3px;
+                    cursor: pointer;
+
+                    &.hover {
+                        fill: rgba(0, 0, 0, 0.5);
+                    }
+
+                    &.active {
+                        fill: rgba(0, 0, 0, 0.5);
+                        stroke: rgba(200, 25, 25, 1);
+
+                        &.hover {
+                            fill: rgba(0, 0, 0, 0.75);
+                        }
+                    }
+                }
+
+                .City-State {
+                    pointer-events: all;
+                    fill: rgba(200, 25, 25, 0.75);
+                    stroke: none;
+                    stroke-width: 2px;
+                    cursor: pointer;
+
+                    &.hover {
+                        fill: rgba(0, 0, 0, 0.5);
+                        stroke: rgba(200, 25, 25, 0.75);
+                    }
+
+                    &.active {
+                        fill: rgba(0, 0, 0, 0.5);
+                        stroke: rgba(200, 25, 25, 1);
+
+                        &.hover {
+                            fill: rgba(0, 0, 0, 0.75);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#map-places-list {
+    .place {
+        &.hover {
+            background: #909090;
+        }
+    }
+}
+
+
+.aside-left {
+    box-shadow: 5px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    background: #F0F0F0;
+}
+
+.aside-right .tab-content {
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    border-left: 1px solid #DDDDDD;
+
+    box-shadow: -5px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    background: #F0F0F0;
+}

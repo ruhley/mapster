@@ -9,7 +9,10 @@
     "font-awesome": "~4.2.0",
     "datatables": "~1.10.2",
     "moment": "~2.8.3",
-    "numeraljs": "~1.5.3"
+    "numeraljs": "~1.5.3",
+    "ember-i18n": "~2.2.1",
+    "d3": "~3.4.11",
+    "snap.svg": "~0.3.0"
   },
   "devDependencies": {},
   "resolutions": {

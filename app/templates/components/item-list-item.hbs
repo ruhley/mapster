@@ -1,0 +1,13 @@
+<div class='col-md-3 col-xs-6 entity'>
+    {{#if item.urlId}}
+        {{#link-to link item.urlId item.url}}
+            {{{item.imageDisplay}}}
+            <p>{{item.name}}</p>
+        {{/link-to}}
+    {{else}}
+        {{#link-to link item.url}}
+            {{{item.imageDisplay}}}
+            <p>{{item.name}}</p>
+        {{/link-to}}
+    {{/if}}
+</div>

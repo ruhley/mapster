@@ -1,6 +1,5 @@
 App.UniverseMediaRoute = Ember.Route.extend({
     model: function(params, transition) {
-        console.log(arguments);
         var _this = this,
             universe = transition.state.params.universe.universe.replace(/-/g, ' '),
             name = params.media.replace(/-/g, ' ');
@@ -9,13 +8,13 @@ App.UniverseMediaRoute = Ember.Route.extend({
             universe: this.store.find('universe', {
                 name: universe
             }),
-            media: this.store.find('media', {
-                name: name
+            media: this.store.find('media', params.id),
+            chapters: this.store.find('chapter', {
+                media_id: params.id
             }),
             name: name
         }).then(function(hash) {
             hash.universe = hash.universe.content[0];
-            hash.media = hash.media.content[0]
             return hash;
         });
     }

@@ -1,0 +1,9 @@
+{{partial 'system/nav'}}
+
+<h2 class='well'>
+    {{model.universe.name}} - {{model.type}}
+</h2>
+
+<div class='row'>
+    {{item-list items=model.items link=model.link limit=999}}
+</div>

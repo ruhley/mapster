@@ -1,4 +1,7 @@
 App.ModelMixin = Ember.Mixin.create({
+    urlId: function() {
+        return this.get('id');
+    }.property('id'),
     url: function() {
         return Ember.String.dasherize(this.get('name'));
     }.property('name'),
