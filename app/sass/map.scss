@@ -30,43 +30,67 @@
                 .Nation {
                     pointer-events: all;
                     fill: none;
-                    stroke: rgba(200, 25, 25, 0.75);
+                    stroke: rgb(200, 25, 25);
+                    stroke-opacity: 0.75;
                     stroke-width: 3px;
                     cursor: pointer;
 
                     &.hover {
-                        fill: rgba(0, 0, 0, 0.5);
+                        fill: rgb(0, 0, 0);
+                        fill-opacity: 0.5;
                     }
 
                     &.active {
-                        fill: rgba(0, 0, 0, 0.5);
-                        stroke: rgba(200, 25, 25, 1);
+                        fill: rgb(0, 0, 0);
+                        fill-opacity: 0.5;
+                        stroke-opacity: 1;
 
                         &.hover {
-                            fill: rgba(0, 0, 0, 0.75);
+                            fill-opacity: 0.75;
                         }
+                    }
+
+                    &.search-match {
+                        stroke-opacity: 1;
+                    }
+
+                    &.search-no-match {
+                        stroke-opacity: 0.25;
                     }
                 }
 
                 .City-State {
                     pointer-events: all;
-                    fill: rgba(200, 25, 25, 0.75);
+                    fill: rgb(200, 25, 25);
+                    fill-opacity: 0.75;
                     stroke: none;
                     stroke-width: 2px;
                     cursor: pointer;
 
                     &.hover {
-                        fill: rgba(0, 0, 0, 0.5);
-                        stroke: rgba(200, 25, 25, 0.75);
+                        fill: rgb(0, 0, 0);
+                        fill-opacity: 0.5;
+                        stroke: rgb(200, 25, 25);
+                        stroke-opacity: 0.75;
                     }
 
                     &.active {
-                        fill: rgba(0, 0, 0, 0.5);
-                        stroke: rgba(200, 25, 25, 1);
+                        fill: rgb(0, 0, 0);
+                        fill-opacity: 0.5;
+                        stroke: rgb(200, 25, 25);
+                        stroke-opacity: 1;
 
                         &.hover {
-                            fill: rgba(0, 0, 0, 0.75);
+                            fill-opacity: 0.75;
                         }
+                    }
+
+                    &.search-match {
+                        fill-opacity: 1;
+                    }
+
+                    &.search-no-match {
+                        fill-opacity: 0.25;
                     }
                 }
             }

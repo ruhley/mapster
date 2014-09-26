@@ -324,15 +324,133 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
-Ember.TEMPLATES["universe/map-places"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+Ember.TEMPLATES["universe/map-events"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n                    <li id='map-places-list-");
+  data.buffer.push("\n            <li class='list-group-item'>\n                <a href='#map-events-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "media.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' data-toggle='collapse'>");
+  stack1 = helpers._triageMustache.call(depth0, "media.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</a>\n                <ul id='map-events-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "media.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' class='list-group collapse map-events-items'>\n                    ");
+  stack1 = helpers.each.call(depth0, "chapter", "in", "model.chapters", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </ul>\n            </li>\n        ");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\n                        ");
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","STRING","ID"],data:data},helper ? helper.call(depth0, "chapter.media_id", "==", "media.id", options) : helperMissing.call(depth0, "compare", "chapter.media_id", "==", "media.id", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                    ");
+  return buffer;
+  }
+function program3(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n                            <li id='map-events-chapters-list-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "chapter.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' class='list-group-item chapter' ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'data-id': ("chapter.id")
+  },hashTypes:{'data-id': "ID"},hashContexts:{'data-id': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n                                <a href='#map-events-chapters-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "chapter.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' data-toggle='collapse'>");
+  stack1 = helpers._triageMustache.call(depth0, "chapter.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</a>\n                                <ul id='map-events-chapters-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "chapter.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' class='list-group collapse map-events-items'>\n                                    ");
+  stack1 = helpers.each.call(depth0, "event", "in", "model.events", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                                </ul>\n                            </li>\n                        ");
+  return buffer;
+  }
+function program4(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\n                                        ");
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0,depth0,depth0],types:["ID","STRING","ID"],data:data},helper ? helper.call(depth0, "event.chapter_id", "==", "chapter.id", options) : helperMissing.call(depth0, "compare", "event.chapter_id", "==", "chapter.id", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                                    ");
+  return buffer;
+  }
+function program5(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n                                            <li id='map-events-list-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "event.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' class='list-group-item event' ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'data-id': ("event.id")
+  },hashTypes:{'data-id': "ID"},hashContexts:{'data-id': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">");
+  stack1 = helpers._triageMustache.call(depth0, "event.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</li>\n                                        ");
+  return buffer;
+  }
+
+  data.buffer.push("<div class='col-sm-12'>\n    ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("text"),
+    'id': ("map-events-search"),
+    'class': ("form-control"),
+    'placeholder': ("Filter the list"),
+    'value': ("mapEventsSearch")
+  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n</div>\n\n<div class='col-sm-12' id='map-events-list'>\n    <ul class='list-group'>\n        ");
+  stack1 = helpers.each.call(depth0, "media", "in", "model.media", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n    </ul>\n</div>\n\n<div class='clearfix'></div>\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["universe/map-places"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n            <li class='list-group-item'>\n                <a href='#map-places-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "placeType.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' data-toggle='collapse'>");
+  stack1 = helpers._triageMustache.call(depth0, "placeType.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</a>\n                <ul id='map-places-");
+  data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "placeType.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("' class='list-group collapse map-places-items'>\n                    ");
+  stack1 = helpers.each.call(depth0, "place", "in", "model.places", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                </ul>\n            </li>\n        ");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\n                        ");
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","STRING","ID"],data:data},helper ? helper.call(depth0, "place.place_type_id", "==", "placeType.id", options) : helperMissing.call(depth0, "compare", "place.place_type_id", "==", "placeType.id", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                    ");
+  return buffer;
+  }
+function program3(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n                            <li id='map-places-list-");
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "place.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push("' class='list-group-item place' ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
@@ -341,14 +459,22 @@ function program1(depth0,data) {
   data.buffer.push(">");
   stack1 = helpers._triageMustache.call(depth0, "place.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</li>\n                ");
+  data.buffer.push("</li>\n                        ");
   return buffer;
   }
 
-  data.buffer.push("<div class='row'>\n    <div class='col-sm-12'>\n        <div class='col-md-6'>\n            <select id='map-places-filter' class='form-control'>\n                <option value='nation'>Nations</options>\n            </select>\n        </div>\n        <div class='col-md-6'>\n            <input type='text' id='map-places-search' class='form-control' placeholder='Filter the list'>\n        </div>\n    </div>\n</div>\n\n<div class='col-sm-12' id='map-places-list'>\n    <ul class='list-group'>\n        <li class='list-group-item'>\n            <a href='#map-places-nations' data-toggle='collapse'>Nations</a>\n            <ul id='map-places-nations' class='list-group collapse'>\n                ");
-  stack1 = helpers.each.call(depth0, "place", "in", "model.places", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  data.buffer.push("<div class='col-sm-12'>\n    ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("text"),
+    'id': ("map-places-search"),
+    'class': ("form-control"),
+    'placeholder': ("Filter the list"),
+    'value': ("mapPlacesSearch")
+  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n</div>\n\n<div class='col-sm-12' id='map-places-list'>\n    <ul class='list-group'>\n        ");
+  stack1 = helpers.each.call(depth0, "placeType", "in", "model.placeTypes", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            </ul>\n        </li>\n    </ul>\n</div>\n\n<div class='clearfix'></div>\n");
+  data.buffer.push("\n    </ul>\n</div>\n\n<div class='clearfix'></div>\n");
   return buffer;
   
 });
@@ -373,8 +499,10 @@ function program1(depth0,data) {
   data.buffer.push("\n\n    <div class='row'>\n        <div class='col-md-8 col-sm-12'>\n            <div class='map-wrapper'>\n                ");
   stack1 = helpers['if'].call(depth0, "model.map.image", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            </div>\n        </div>\n\n        <div class='col-md-4 col-sm-12 aside-right'>\n            <ul class='nav nav-tabs' role='tablist'>\n                <li class='active'><a href='#map-places' role='tab' data-toggle='tab'>Places</a></li>\n            </ul>\n\n\n            <div class='tab-content'>\n                <div class='tab-pane active' id='map-places'>\n                    ");
+  data.buffer.push("\n            </div>\n        </div>\n\n        <div class='col-md-4 col-sm-12 aside-right'>\n            <ul class='nav nav-tabs' role='tablist'>\n                <li class='active'><a href='#map-places' role='tab' data-toggle='tab'>Places</a></li>\n                <li><a href='#map-events' role='tab' data-toggle='tab'>Events</a></li>\n            </ul>\n\n\n            <div class='tab-content'>\n                <div class='tab-pane active' id='map-places'>\n                    ");
   data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "universe/map-places", options) : helperMissing.call(depth0, "partial", "universe/map-places", options))));
+  data.buffer.push("\n                </div>\n                <div class='tab-pane' id='map-events'>\n                    ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "universe/map-events", options) : helperMissing.call(depth0, "partial", "universe/map-events", options))));
   data.buffer.push("\n                </div>\n            </div>\n        </div>\n    </div>\n");
   return buffer;
   }
@@ -406,7 +534,7 @@ function program6(depth0,data) {
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("model.map.image")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(" class='map-image' />\n                            <svg class='map-overlay' transform='scale(1)'>\n                                ");
+  data.buffer.push(" class='map-image' />\n                            <svg class='map-overlay'>\n                                ");
   stack1 = helpers.each.call(depth0, "place", "in", "model.places", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n\n                                <rect id='map-tooltip'>\n                                    <text>My Tooltip</text>\n                                </rect>\n                            </svg>\n                        </div>\n                    </div>\n                ");

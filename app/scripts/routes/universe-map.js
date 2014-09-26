@@ -13,15 +13,45 @@ App.UniverseMapRoute = Ember.Route.extend({
                 map_id: params.id,
                 contains: 'PlaceTypes'
             }),
+            events: this.store.find('event', {
+                map_id: params.id,
+                contains: 'Chapters'
+            }),
             name: name
         }).then(function(hash) {
+            var uniquePlaceTypeIds = [];
             hash.universe = hash.universe.content[0];
+            hash.placeTypes = [];
+
+            for (var i = 0; i < hash.places.content.length; i++) {
+                var placeType = hash.places.content[i].get('place_type');
+
+                if ($.inArray(placeType.get('id'), uniquePlaceTypeIds) === -1) {
+                    hash.placeTypes.push(placeType);
+                    uniquePlaceTypeIds.push(placeType.get('id'));
+                }
+            }
+
             return hash;
         });
     },
     actions: {
         zoom: function(type, value, time) {
-            var scale = $('.map-overlay')[0].createSVGTransform(),
+            var _this = this,
+                s = Snap('.map-overlay'),
+                matrix = new Snap.Matrix();
+
+            matrix.scale(1.2);
+
+            s.animate({
+                transform: matrix
+            }, 3000, mina.bounce, function() {
+                console.log(arguments);
+                _this.controller.redraw();
+            });
+
+
+            /*var scale = $('.map-overlay')[0].createSVGTransform(),
                 transformList = $('.map-overlay')[0].transform.baseVal,
                 scaleValue = transformList.getItem(0).matrix.a,
                 imageHeight = '+=0',
@@ -88,7 +118,7 @@ App.UniverseMapRoute = Ember.Route.extend({
             $('.map-drag').animate({
                 top: imageTop,
                 left: imageLeft
-            }, time);
+            }, time);*/
         }
     }
 });

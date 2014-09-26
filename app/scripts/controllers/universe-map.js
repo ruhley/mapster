@@ -1,59 +1,55 @@
 App.UniverseMapController = Ember.Controller.extend({
+    mapPlacesSearch: '',
     afterRender: function() {
         var _this = this,
             image = $('.map-image'),
             svg = $('.map-overlay'),
             svgItems = svg.children(),
-            selected = false,
-            dragging = false,
             s = Snap('.map-overlay');
 
         svg.width(image.width());
         svg.height(image.height());
+        //svg[0].setAttribute('viewBox', '0 0 ' + image.width() + ' ' + image.height());
 
         image.data('width', image.width());
         image.data('height', image.height());
 
         //hack to redraw the svg elements as ember doesn't like svg yet
-        svg.html(svg.html());
+        this.redraw();
         svgItems = svg.children();
 
         $('.map-wrapper').mousemove(function(evt) {
+            var dragging = _this.get('dragging'),
+                selected = _this.get('selected');
+
             if (dragging) {
                 $('.map-drag').offset({
                     left: evt.clientX - dragging[0],
                     top: evt.clientY - dragging[1]
                 });
+
+                if (selected) {
+                    var offset = $('.map-drag').offset(),
+                        bBox = selected.getBBox();
+
+                    $('.popover').css({
+                        top: 'auto',
+                        bottom: (($('.map-wrapper').height() - bBox.cy + 10) - offset.top) + 'px',
+                        left: ((bBox.cx - ($('.popover').width() / 2)) + offset.left) + 'px'
+                    });
+                }
             }
-        })
+        });
 
         $('.map-drag').mousedown(function(evt) {
-            dragging = [evt.offsetX, evt.offsetY];
+            _this.set('dragging', [evt.offsetX, evt.offsetY]);
         }).dblclick(function() {
             _this.send('zoom', 'in');
         });
 
         $(document).mouseup(function() {
-            dragging = false;
+            _this.set('dragging', false);
         });
-
-        /*svgItems.each(function() {
-            var el = $(this),
-                place = _this.getPlace(el.data('id'));
-
-            el.popover({
-                html: true,
-                placement: 'top',
-                title: place.get('name'),
-                content: place.get('description'),
-                container: '.map-drag'
-            });
-
-            el.on('show.bs.popover', function() {
-                console.log(arguments);
-                $('.map-drag .popover').fadeOut(100).remove();
-            });
-        });*/
 
         svgItems.hover(function() {
             _this.hoverItem($(this).data('id'));
@@ -74,12 +70,20 @@ App.UniverseMapController = Ember.Controller.extend({
         this.set('s', s);
 
     },
+    redraw: function() {
+        $('.map-overlay').html($('.map-overlay').html());
+        $('.map-overlay')[0].forceRedraw();
+    },
     hoverItem: function(id) {
         var place = Snap('#map-place-' + id),
             list = $('#map-places-list-' + id);
 
         place.addClass('hover');
         list.addClass('hover');
+
+        if (!this.get('selected')) {
+            this.showPopover(id);
+        }
     },
     unHoverItem: function(id) {
         var place = Snap('#map-place-' + id),
@@ -87,6 +91,10 @@ App.UniverseMapController = Ember.Controller.extend({
 
         place.removeClass('hover');
         list.removeClass('hover');
+
+        if (!this.get('selected')) {
+            this.removePopover();
+        }
     },
     clickItem: function(id) {
         var place = Snap('#map-place-' + id),
@@ -102,7 +110,31 @@ App.UniverseMapController = Ember.Controller.extend({
         }
 
         $('#map-places-list .place').removeClass('active');
-        list.toggleClass('active');
+
+        if (!currentlyActive) {
+            list.addClass('active');
+        }
+
+        this.showPopover(id);
+
+        this.set('selected', currentlyActive ? false : place);
+    },
+    searchItem: function(id, search) {
+        var place = Snap('#map-place-' + id),
+            list = $('#map-places-list-' + id),
+            matches = search = '' || list.text().toLowerCase().indexOf(search) !== -1;
+
+        if (matches) {
+            place.addClass('search-match');
+            place.removeClass('search-no-match');
+            list.addClass('search-match');
+            list.removeClass('search-no-match');
+        } else {
+            place.removeClass('search-match');
+            place.addClass('search-no-match');
+            list.removeClass('search-match');
+            list.addClass('search-no-match');
+        }
     },
     getPlace: function(id) {
         var places = this.get('model.places');
@@ -114,46 +146,39 @@ App.UniverseMapController = Ember.Controller.extend({
         }
 
         return null;
-    }
-    /*,
-    displayPlaceInfo: function(id) {
-        var places = this.get('model.places');
-
-        for (var i = 0; i < places.content.length; i++) {
-            if (places.content[i].get('id') == id) {
-                var html = [];
-
-                html.push('<h3>');
-                html.push(places.content[i].get('name'));
-
-                if (places.content[i].get('image')) {
-                    html.push('<img src="');
-                    html.push(places.content[i].get('image'));
-                    html.push('" alt="" class="thumb pull-right">');
-                }
-
-                html.push('</h3>');
-
-                if (places.content[i].get('description')) {
-                    html.push('<p>');
-                    html.push(places.content[i].get('description'));
-                    html.push('</p>');
-                }
-
-                if (places.content[i].get('link')) {
-                    html.push('<p>For more information visit <a href="');
-                    html.push(places.content[i].get('link'));
-                    html.push('" target="_blank">');
-                    html.push(places.content[i].get('link'));
-                    html.push('</a></p>');
-                }
-
-                this.displayInfo(html.join(''));
-                break;
-            }
-        }
     },
-    displayInfo: function(html) {
-        $('#map-info').html(html);
-    }*/
+    showPopover: function(id) {
+        var place = Snap('#map-place-' + id),
+            bBox = place.getBBox(),
+            item = this.getPlace(id),
+            popover = $('<div>').addClass('popover fade top in popover-place').attr('role', 'tooltip')
+            .append(
+                $('<div>').addClass('arrow')
+            ).append(
+                $('<div>').addClass('popover-title').text(item.get('name'))
+            ).append(
+                $('<div>').addClass('popover-content').text(item.get('description'))
+            );
+
+        this.removePopover();
+
+        popover.appendTo($('.map-wrapper')).show();
+
+        popover.css({
+            top: 'auto',
+            bottom: ($('.map-wrapper').height() - bBox.cy + 10) + 'px',
+            left: (bBox.cx - (popover.width() / 2)) + 'px'
+        });
+    },
+    removePopover: function() {
+        $('.popover-place').remove();
+    },
+    mapPlacesSearchChanged: function() {
+        var _this = this,
+            search = this.get('mapPlacesSearch').toLowerCase();
+
+        $('.map-places-items li').each(function() {
+            _this.searchItem($(this).data('id'), search);
+        });
+    }.observes('mapPlacesSearch')
 });

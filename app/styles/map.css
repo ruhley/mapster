@@ -29,37 +29,57 @@
 .map-wrapper .map-container .map-drag .map-overlay .Nation {
   pointer-events: all;
   fill: none;
-  stroke: rgba(200, 25, 25, 0.75);
+  stroke: #c81919;
+  stroke-opacity: 0.75;
   stroke-width: 3px;
   cursor: pointer;
 }
 .map-wrapper .map-container .map-drag .map-overlay .Nation.hover {
-  fill: rgba(0, 0, 0, 0.5);
+  fill: black;
+  fill-opacity: 0.5;
 }
 .map-wrapper .map-container .map-drag .map-overlay .Nation.active {
-  fill: rgba(0, 0, 0, 0.5);
-  stroke: #c81919;
+  fill: black;
+  fill-opacity: 0.5;
+  stroke-opacity: 1;
 }
 .map-wrapper .map-container .map-drag .map-overlay .Nation.active.hover {
-  fill: rgba(0, 0, 0, 0.75);
+  fill-opacity: 0.75;
+}
+.map-wrapper .map-container .map-drag .map-overlay .Nation.search-match {
+  stroke-opacity: 1;
+}
+.map-wrapper .map-container .map-drag .map-overlay .Nation.search-no-match {
+  stroke-opacity: 0.25;
 }
 .map-wrapper .map-container .map-drag .map-overlay .City-State {
   pointer-events: all;
-  fill: rgba(200, 25, 25, 0.75);
+  fill: #c81919;
+  fill-opacity: 0.75;
   stroke: none;
   stroke-width: 2px;
   cursor: pointer;
 }
 .map-wrapper .map-container .map-drag .map-overlay .City-State.hover {
-  fill: rgba(0, 0, 0, 0.5);
-  stroke: rgba(200, 25, 25, 0.75);
+  fill: black;
+  fill-opacity: 0.5;
+  stroke: #c81919;
+  stroke-opacity: 0.75;
 }
 .map-wrapper .map-container .map-drag .map-overlay .City-State.active {
-  fill: rgba(0, 0, 0, 0.5);
+  fill: black;
+  fill-opacity: 0.5;
   stroke: #c81919;
+  stroke-opacity: 1;
 }
 .map-wrapper .map-container .map-drag .map-overlay .City-State.active.hover {
-  fill: rgba(0, 0, 0, 0.75);
+  fill-opacity: 0.75;
+}
+.map-wrapper .map-container .map-drag .map-overlay .City-State.search-match {
+  fill-opacity: 1;
+}
+.map-wrapper .map-container .map-drag .map-overlay .City-State.search-no-match {
+  fill-opacity: 0.25;
 }
 
 #map-places-list .place.hover {
