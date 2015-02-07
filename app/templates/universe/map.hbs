@@ -21,7 +21,7 @@
                             <img {{bind-attr src=model.map.image}} class='map-image' />
                             <svg class='map-overlay'>
                                 {{#each place in model.places}}
-                                    {{coords place}}
+                                    {{{coords-display place.coordinates}}}
                                 {{/each}}
 
                                 <rect id='map-tooltip'>

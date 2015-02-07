@@ -1,21 +1,27 @@
 {
   "name": "mapster",
-  "version": "0.0.1",
   "dependencies": {
-    "ember": "~1.8.0",
+    "bootstrap": "~3.3.2",
+    "datatables": "~1.10.4",
+    "ember": "components/ember#canary",
+    "ember-data": "1.0.0-beta.14.1",
+    "ember-resolver": "~0.1.11",
+    "loader.js": "ember-cli/loader.js#1.0.1",
+    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
+    "ember-cli-test-loader": "rwjblue/ember-cli-test-loader#0.1.0",
+    "ember-load-initializers": "ember-cli/ember-load-initializers#0.0.2",
+    "ember-qunit": "~0.1.8",
+    "ember-qunit-notifications": "~0.0.6",
+    "font-awesome": "~4.3.0",
     "handlebars": "~2.0.0",
-    "ember-data": "~1.0.0-beta.9",
-    "bootstrap": "~3.2.0",
-    "font-awesome": "~4.2.0",
-    "datatables": "~1.10.2",
-    "moment": "~2.8.3",
-    "numeraljs": "~1.5.3",
-    "ember-i18n": "~2.2.1",
-    "d3": "~3.4.11",
+    "jquery": "~2.1.3",
+    "lodash": "~3.0.1",
+    "moment": "~2.9.0",
+    "numeral": "~1.5.3",
+    "qunit": "~1.17.1",
     "snap.svg": "~0.3.0"
   },
-  "devDependencies": {},
   "resolutions": {
-    "handlebars": "~1.3.0"
+    "ember": "canary"
   }
 }

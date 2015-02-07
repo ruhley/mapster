@@ -1,8 +1,8 @@
 {{#if items}}
     {{#each item in items}}
-        {{#compare _view.contentIndex '<' limit}}
+        {{!#compare _view.contentIndex '<' limit}}
             {{item-list-item item=item link=link}}
-        {{/compare}}
+        {{!/compare}}
     {{/each}}
 {{else}}
     None found
