@@ -1,0 +1,22 @@
+<div class='col-sm-12'>
+  {{input type='text' id='map-places-search' class='form-control' placeholder='Filter the list' value=mapPlacesSearch}}
+</div>
+
+<div class='col-sm-12' id='map-places-list'>
+  <ul class='list-group'>
+    {{#each placeType in model.placeTypes}}
+      <li class='list-group-item'>
+        <a href='#map-places-{{unbound placeType.id}}' data-toggle='collapse'>{{placeType.name}}</a>
+        <ul id='map-places-{{unbound placeType.id}}' class='list-group collapse map-places-items'>
+          {{#each place in model.places}}
+            {{#if (if-compare place.place_type_id '==' placeType.id)}}
+              <li id='map-places-list-{{unbound place.id}}' class='list-group-item place' {{bind-attr data-id=place.id}}>{{place.name}}</li>
+            {{/if}}
+          {{/each}}
+        </ul>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class='clearfix'></div>

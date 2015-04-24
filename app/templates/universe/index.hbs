@@ -1,0 +1,14 @@
+{{item-display item=model.universe}}
+
+<div class='row'>
+    <h3>{{#link-to 'universe.items' 'map'}}Maps{{/link-to}}</h3>
+    {{item-list items=model.maps limit=4 link='universe.map'}}
+</div>
+<div class='row'>
+    <h3>{{#link-to 'universe.items' 'media'}}Media{{/link-to}}</h3>
+    {{item-list items=model.media limit=4 link='universe.media'}}
+</div>
+<div class='row'>
+    <h3>{{#link-to 'universe.items' 'character'}}Characters{{/link-to}}</h3>
+    {{item-list items=model.characters limit=4 link='universe.character'}}
+</div>

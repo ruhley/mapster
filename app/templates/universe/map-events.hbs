@@ -1,0 +1,37 @@
+<div class='col-sm-12'>
+  {{input type='text' id='map-events-search' class='form-control' placeholder='Filter the list' value=mapEventsSearch}}
+</div>
+
+<div class='col-sm-12'>
+  <div class='col-sm-12'>
+    <input id='map-events-slider' type='text'>
+  </div>
+</div>
+
+<div class='col-sm-12' id='map-events-list'>
+  <ul class='list-group'>
+    {{#each media in model.media}}
+      <li class='list-group-item'>
+        <a href='#map-events-{{unbound media.id}}' data-toggle='collapse'>{{media.name}}</a>
+        <ul id='map-events-{{unbound media.id}}' class='list-group collapse map-events-items'>
+          {{#each chapter in model.chapters}}
+            {{#if (if-compare chapter.media_id '==' media.id)}}
+              <li id='map-events-chapters-list-{{unbound chapter.id}}' class='list-group-item chapter' {{bind-attr data-id=chapter.id}}>
+                <a href='#map-events-chapters-{{unbound chapter.id}}' data-toggle='collapse'>{{chapter.sequence}} {{chapter.name}}</a>
+                <ul id='map-events-chapters-{{unbound chapter.id}}' class='list-group collapse map-events-items'>
+                  {{#each event in model.events}}
+                    {{#if (if-compare event.chapter_id '==' chapter.id)}}
+                      <li id='map-events-list-{{unbound event.id}}' class='list-group-item event' {{bind-attr data-id=event.id}}>{{event.name}}</li>
+                    {{/if}}
+                  {{/each}}
+                </ul>
+              </li>
+            {{/if}}
+          {{/each}}
+        </ul>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class='clearfix'></div>

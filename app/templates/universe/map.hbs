@@ -1,0 +1,60 @@
+{{partial 'system/nav'}}
+
+{{#if model.map}}
+	<h2 class='well'>{{model.map.name}}</h2>
+
+	{{#if model.map.description}}
+		<p>{{model.map.description}}</p>
+	{{/if}}
+
+	{{#if model.map.link}}
+		<p>For more information visit - {{{model.map.linkTo}}}</p>
+	{{/if}}
+
+	<div class='row'>
+		<div class='col-md-8 col-sm-12'>
+			<div class='map-wrapper'>
+				{{#if model.map.image}}
+					<div class='map-shadow'></div>
+					<div class='map-container'>
+						<div class='map-drag'>
+							<img {{bind-attr src=model.map.image}} class='map-image' />
+							<svg class='map-overlay'>
+								{{#each place in model.places}}
+									{{svg-path place=place}}
+								{{/each}}
+
+                {{#each event in model.events}}
+                  {{svg-path place=event}}
+                {{/each}}
+
+								<rect id='map-tooltip'>
+									<text>My Tooltip</text>
+								</rect>
+							</svg>
+						</div>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class='col-md-4 col-sm-12 aside-right'>
+			<ul class='nav nav-tabs' role='tablist'>
+				<li class='active'><a href='#map-places' role='tab' data-toggle='tab'>Places</a></li>
+				<li><a href='#map-events' role='tab' data-toggle='tab'>Events</a></li>
+			</ul>
+
+
+			<div class='tab-content'>
+				<div class='tab-pane active' id='map-places'>
+					{{partial 'universe/map-places'}}
+				</div>
+				<div class='tab-pane' id='map-events'>
+					{{partial 'universe/map-events'}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{else}}
+	model.map not found
+{{/if}}
