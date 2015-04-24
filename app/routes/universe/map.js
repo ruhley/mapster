@@ -1,127 +1,72 @@
-/* global Snap */
+/* global Snap, mina */
 import Ember from 'ember';
 import $ from 'jquery';
 
 export default Ember.Route.extend({
-    model: function(params, transition) {
-        var universe = transition.state.params.universe.universe.replace(/-/g, ' '),
-            name = params.map.replace(/-/g, ' ');
+  model: function(params) {
+    var parentModel = this.modelFor('universe'),
+      name = params.map.replace(/-/g, ' ');
 
-        return Ember.RSVP.hash({
-            universe: this.store.find('universe', {
-                name: universe
-            }),
-            map: this.store.find('map', params.id),
-            places: this.store.find('place', {
-                map_id: params.id,
-                contains: 'PlaceTypes'
-            }),
-            events: this.store.find('event', {
-                map_id: params.id,
-                contains: 'Chapters'
-            }),
-            name: name
-        }).then(function(hash) {
-            var uniquePlaceTypeIds = [];
-            hash.universe = hash.universe.content[0];
-            hash.placeTypes = [];
+    return Ember.RSVP.hash({
+      map: this.store.find('map', params.id),
+      places: this.store.find('place', {
+        map_id: params.id,
+        contains: 'PlaceTypes'
+      }),
+      events: this.store.find('event', {
+        map_id: params.id,
+        contains: 'Chapters'
+      }),
+      media: this.store.find('media', {
+        universe_id: parentModel.universe.id
+      }),
+      name: name
+    }).then(function(hash) {
+      var uniquePlaceTypeIds = [],
+        uniqueChapterIds = [],
+        i;
 
-            for (var i = 0; i < hash.places.content.length; i++) {
-                var placeType = hash.places.content[i].get('place_type');
+      hash = $.extend(true, {}, parentModel, hash);
 
-                if (placeType && $.inArray(placeType.get('id'), uniquePlaceTypeIds) === -1) {
-                    hash.placeTypes.push(placeType);
-                    uniquePlaceTypeIds.push(placeType.get('id'));
-                }
-            }
+      hash.placeTypes = [];
 
-            return hash;
-        });
-    },
-    actions: {
-        zoom: function(/*type, value, time*/) {
-            var _this = this,
-                s = new Snap('.map-overlay'),
-                matrix = new Snap.Matrix();
+      for (i = 0; i < hash.places.content.length; i++) {
+        var placeType = hash.places.content[i].get('place_type');
 
-            matrix.scale(1.2);
-
-            s.animate({
-                transform: matrix
-            }, 3000, mina.bounce, function() {
-                console.log(arguments);
-                _this.controller.redraw();
-            });
-
-
-            /*var scale = $('.map-overlay')[0].createSVGTransform(),
-                transformList = $('.map-overlay')[0].transform.baseVal,
-                scaleValue = transformList.getItem(0).matrix.a,
-                imageHeight = '+=0',
-                imageLeft = '+=0',
-                imageTop = '+=0';
-            if (!value) {
-                if (type == 'in' || type == 'out' || type == 'reset') {
-                    value = 0.1;
-                } else {
-                    value = 50;
-                }
-            }
-
-            if (!time) {
-                time = 500;
-            }
-
-            switch (type) {
-                case 'left':
-                    imageLeft = '-=' + value + 'px';
-                    break;
-
-                case 'right':
-                    imageLeft = '+=' + value + 'px';
-                    break;
-
-                case 'up':
-                    imageTop = '-=' + value + 'px';
-                    break;
-
-                case 'down':
-                    imageTop = '+=' + value + 'px';
-                    break;
-
-                case 'in':
-                    scaleValue = ($('.map-image').width() * (1 + value)) / $('.map-image').data('width');
-                    imageWidth = '+=' + (value * 100) + '%';
-                    break;
-
-                case 'out':
-                    scaleValue = ($('.map-image').width() * (1 - value)) / $('.map-image').data('width');
-                    imageWidth = '-=' + (value * 100) + '%';
-                    break;
-
-                case 'reset':
-                    scaleValue = $('.map-overlay').data('set-scale');
-                    imageWidth = $('.map-image').data('set-width');
-                    imageLeft = '0';
-                    imageTop = '0';
-                    break;
-            }
-
-            scale.setScale(scaleValue, scaleValue);
-            transformList.replaceItem(scale, 0);
-            //$('.map-overlay').attr('transform', 'scale(' + scaleValue + ')')
-
-
-
-            $('.map-image').animate({
-                width: imageWidth
-            }, time);
-
-
-            $('.map-drag').animate({
-                top: imageTop,
-                left: imageLeft
-            }, time);*/
+        if (placeType && $.inArray(placeType.get('id'), uniquePlaceTypeIds) === -1) {
+          hash.placeTypes.push(placeType);
+          uniquePlaceTypeIds.push(placeType.get('id'));
         }
+      }
+
+      hash.chapters = [];
+
+      for (i = 0; i < hash.events.content.length; i++) {
+        var chapterId = hash.events.content[i].get('chapter_id');
+
+        if (chapterId && $.inArray(chapterId, uniqueChapterIds) === -1) {
+          hash.chapters.push(hash.events.content[i].get('chapter'));
+          uniqueChapterIds.push(chapterId);
+        }
+      }
+
+      return hash;
+    });
+  },
+  actions: {
+    zoom: function() {
+      var _this = this,
+        s = new Snap('.map-overlay'),
+        matrix = new Snap.Matrix();
+
+      matrix.scale(1.2);
+
+      s.animate({
+        transform: matrix
+      }, 3000, mina.bounce, function() {
+        console.log(arguments);
+        _this.controller.redraw();
+      });
     }
+  }
 });

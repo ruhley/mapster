@@ -9,5 +9,7 @@ export default DS.Model.extend(ModelMixin, {
     coordinates: DS.attr('string'),
     map_id: DS.attr('number'),
     place_type_id: DS.attr('number'),
-    created: DS.attr('date')
+    created: DS.attr('date'),
+
+    place_type: DS.belongsTo('place_type')
 });

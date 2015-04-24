@@ -1,9 +1,9 @@
 {{#if items}}
-    {{#each item in items}}
-        {{!#compare _view.contentIndex '<' limit}}
-            {{item-list-item item=item link=link}}
-        {{!/compare}}
-    {{/each}}
+  {{#each item in items}}
+    {{#if (if-compare _view.contentIndex '<' limit)}}
+      {{item-list-item item=item link=link}}
+    {{/if}}
+  {{/each}}
 {{else}}
-    None found
+  None found
 {{/if}}

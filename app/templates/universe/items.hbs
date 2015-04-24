@@ -1,7 +1,7 @@
 {{partial 'system/nav'}}
 
 <h2 class='well'>
-    {{model.universe.name}} - {{model.type}}
+    {{#link-to 'universe' model.universe.url}}{{model.universe.name}}{{/link-to}} - {{model.type}}
 </h2>
 
 <div class='row'>

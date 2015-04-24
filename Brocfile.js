@@ -31,6 +31,7 @@ app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.s
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf', {destDir: 'fonts'});
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff', {destDir: 'fonts'});
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2', {destDir: 'fonts'});
+app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {destDir: 'assets'});
 
 // font awesome
 app.import({
@@ -61,6 +62,17 @@ app.import({
 app.import({
 	development: 'bower_components/snap.svg/dist/snap.svg.js',
 	production: 'bower_components/snap.svg/dist/snap.svg-min.js'
+});
+
+// bootstrap-slider
+app.import({
+  development: 'bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css',
+  production: 'bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css'
+});
+
+app.import({
+  development: 'bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js',
+  production: 'bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js'
 });
 
 

@@ -1,19 +1,17 @@
 import Ember from 'ember';
+import $ from 'jquery';
 
 export default Ember.Route.extend({
-    model: function(params, transition) {
-        var universe = transition.state.params.universe.universe.replace(/-/g, ' ');
+  model: function(params) {
+    var parentModel = this.modelFor('universe');
 
-        return Ember.RSVP.hash({
-            universe: this.store.find('universe', {
-                name: universe
-            }),
-            items: this.store.find(params.type),
-            type: Ember.String.capitalize(params.type),
-            link: 'universe.' + params.type
-        }).then(function(hash) {
-            hash.universe = hash.universe.content[0];
-            return hash;
-        });
-    }
+    return Ember.RSVP.hash({
+      items: this.store.find(params.type, {universe_id: parentModel.universe.id}),
+      type: Ember.String.capitalize(params.type),
+      link: 'universe.' + params.type
+    }).then(function(hash) {
+      hash = $.extend(true, {}, parentModel, hash);
+      return hash;
+    });
+  }
 });

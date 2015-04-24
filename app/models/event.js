@@ -7,5 +7,7 @@ export default DS.Model.extend(ModelMixin, {
     link: DS.attr('string'),
     sequence: DS.attr('number'),
     chapter_id: DS.attr('number'),
-    created: DS.attr('date')
+    created: DS.attr('date'),
+
+    chapter: DS.belongsTo('chapter')
 });
