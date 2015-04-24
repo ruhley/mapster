@@ -15,6 +15,7 @@ class MapsterEntitiesFixture extends TestFixture
      *
      * @var array
      */
+    // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -29,6 +30,7 @@ class MapsterEntitiesFixture extends TestFixture
 'engine' => 'InnoDB', 'collation' => 'utf8_general_ci'
         ],
     ];
+    // @codingStandardsIgnoreEnd
 
     /**
      * Records

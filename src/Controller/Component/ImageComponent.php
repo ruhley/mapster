@@ -16,39 +16,39 @@
 
 		public function resizeImage($src, $dest, $newWidth, $newHeight, $forceDimensions = false) {
 			$imageDetails = getimagesize($src);
-			$original = array(
+			$original = [
 				'width' => $imageDetails[0],
 				'height' => $imageDetails[1],
-			);
+			]
 
 			// get aspect ratio new width and height
 			if ($forceDimensions) {
-				$new = array(
+				$new = [
 					'width' => $newWidth,
 					'height' => $newHeight
-				);
+				];
 			} else {
 				if ($original['width'] > $original['height'])
 				{
-					$new = array(
+					$new = [
 						'width' => $newWidth,
 						'height' => intval($original['height'] * $newWidth / $original['width'])
-					);
+					];
 				}
 				else
 				{
-					$new = array(
+					$new = [
 						'width' => intval($original['width'] * $newHeight / $original['height']),
 						'height' => $newHeight
-					);
+					];
 				}
 			}
 
 
-			$position = array(
+			$position = [
 				'x' => 0,
 				'y' => 0
-			);
+			];
 
 
 			if ($imageDetails[2] == 1)

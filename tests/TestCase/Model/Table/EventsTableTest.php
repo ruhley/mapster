@@ -21,22 +21,25 @@ class EventsTableTest extends TestCase
         'Chapters' => 'app.chapters',
         'Media' => 'app.media',
         'Universes' => 'app.universes',
-        'CharacterChanges' => 'app.character_changes',
+        'CharacterChangeVersions' => 'app.character_change_versions',
         'Characters' => 'app.characters',
+        'CharacterChanges' => 'app.character_changes',
         'CharacterVersions' => 'app.character_versions',
-        'MapChanges' => 'app.map_changes',
+        'MapChangeVersions' => 'app.map_change_versions',
         'Maps' => 'app.maps',
+        'MapChanges' => 'app.map_changes',
         'MapVersions' => 'app.map_versions',
-        'PlaceChanges' => 'app.place_changes',
+        'PlaceChangeVersions' => 'app.place_change_versions',
         'PlaceTypes' => 'app.place_types',
-        'PlaceTypeVersions' => 'app.place_type_versions',
-        'PlaceVersions' => 'app.place_versions',
+        'PlaceChanges' => 'app.place_changes',
         'Places' => 'app.places',
+        'PlaceVersions' => 'app.place_versions',
+        'PlaceTypeVersions' => 'app.place_type_versions',
         'MediaVersions' => 'app.media_versions',
-        'UniverseChanges' => 'app.universe_changes',
         'UniverseVersions' => 'app.universe_versions',
         'ChapterVersions' => 'app.chapter_versions',
-        'EventVersions' => 'app.event_versions'
+        'EventVersions' => 'app.event_versions',
+        'EventPlaces' => 'app.event_places'
     ];
 
     /**

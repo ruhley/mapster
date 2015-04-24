@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class MediaController extends AppController {
+/**
+ * Media Controller
+ *
+ * @property \App\Model\Table\MediaTable $Media
+ */
+class MediaController extends AppController
+{
 
-
-    }
-?>
+}

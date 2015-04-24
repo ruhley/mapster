@@ -17,10 +17,18 @@ use Cake\Utility\Inflector;
 <CakePHPBakeOpenTagphp
 namespace <?= $namespace ?>\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
-use Cake\Validation\Validator;
+<?php
+$uses = [
+    "use $namespace\\Model\\Entity\\$entity;",
+    'use Cake\ORM\Query;',
+    'use Cake\ORM\RulesChecker;',
+    'use Cake\ORM\Table;',
+    'use Cake\Validation\Validator;'
+];
+sort($uses);
+echo implode("\n", $uses);
+?>
+
 
 /**
  * <?= $name ?> Model
@@ -66,7 +74,7 @@ class <?= $name ?>Table extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator instance
+     * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)

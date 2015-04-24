@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class ChapterVersionsController extends AppController {
+/**
+ * ChapterVersions Controller
+ *
+ * @property \App\Model\Table\ChapterVersionsTable $ChapterVersions
+ */
+class ChapterVersionsController extends AppController
+{
 
-
-    }
-?>
+}

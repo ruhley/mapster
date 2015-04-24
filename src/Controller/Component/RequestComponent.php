@@ -14,6 +14,7 @@
 			$settings = [
 				'fields' => isset($_REQUEST['fields']) ? explode(',', $_REQUEST['fields']) : [],
 				'order' => [],
+                'limit' => isset($_REQUEST['limit']) ? abs($_REQUEST['limit']) : 99,
 				'conditions' => isset($_REQUEST['conditions']) ? explode(',', $_REQUEST['conditions']) : []
 			];
 			$contains = isset($_REQUEST['contains']) ? explode(',', $_REQUEST['contains']) : [];
@@ -40,10 +41,10 @@
 				}
 			}
 
-			return array(
+			return [
 				'settings' => $settings,
 				'contains' => $contains
-			);
+			];
 		}
 
 		public function parseData($data, $modelName = '') {

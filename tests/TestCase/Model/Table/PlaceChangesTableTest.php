@@ -19,24 +19,27 @@ class PlaceChangesTableTest extends TestCase
     public $fixtures = [
         'PlaceChanges' => 'app.place_changes',
         'PlaceTypes' => 'app.place_types',
-        'PlaceTypeVersions' => 'app.place_type_versions',
-        'PlaceVersions' => 'app.place_versions',
+        'PlaceChangeVersions' => 'app.place_change_versions',
         'Maps' => 'app.maps',
         'Universes' => 'app.universes',
-        'CharacterChanges' => 'app.character_changes',
+        'CharacterChangeVersions' => 'app.character_change_versions',
         'Characters' => 'app.characters',
-        'CharacterVersions' => 'app.character_versions',
+        'CharacterChanges' => 'app.character_changes',
         'Events' => 'app.events',
         'Chapters' => 'app.chapters',
         'Media' => 'app.media',
         'ChapterVersions' => 'app.chapter_versions',
         'EventVersions' => 'app.event_versions',
+        'EventPlaces' => 'app.event_places',
+        'Places' => 'app.places',
+        'PlaceVersions' => 'app.place_versions',
+        'MapChangeVersions' => 'app.map_change_versions',
         'MapChanges' => 'app.map_changes',
-        'UniverseChanges' => 'app.universe_changes',
+        'CharacterVersions' => 'app.character_versions',
         'MapVersions' => 'app.map_versions',
         'MediaVersions' => 'app.media_versions',
         'UniverseVersions' => 'app.universe_versions',
-        'Places' => 'app.places'
+        'PlaceTypeVersions' => 'app.place_type_versions'
     ];
 
     /**

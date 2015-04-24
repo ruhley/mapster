@@ -20,15 +20,16 @@ class Universe extends Entity
         'description' => true,
         'image' => true,
         'link' => true,
+        'character_change_versions' => true,
         'character_changes' => true,
         'character_versions' => true,
         'characters' => true,
+        'map_change_versions' => true,
         'map_changes' => true,
         'map_versions' => true,
         'maps' => true,
         'media' => true,
         'media_versions' => true,
-        'universe_changes' => true,
         'universe_versions' => true,
     ];
 }

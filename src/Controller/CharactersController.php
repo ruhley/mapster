@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class CharactersController extends AppController {
+/**
+ * Characters Controller
+ *
+ * @property \App\Model\Table\CharactersTable $Characters
+ */
+class CharactersController extends AppController
+{
 
-
-    }
-?>
+}

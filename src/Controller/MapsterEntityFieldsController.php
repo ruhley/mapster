@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class MapsterEntityFieldsController extends AppController {
+/**
+ * MapsterEntityFields Controller
+ *
+ * @property \App\Model\Table\MapsterEntityFieldsTable $MapsterEntityFields
+ */
+class MapsterEntityFieldsController extends AppController
+{
 
-
-    }
-?>
+}

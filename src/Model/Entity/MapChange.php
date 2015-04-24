@@ -25,5 +25,6 @@ class MapChange extends Entity
         'universe' => true,
         'map' => true,
         'event' => true,
+        'map_change_versions' => true,
     ];
 }

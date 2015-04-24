@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class PlaceChangeVersionsController extends AppController {
+/**
+ * PlaceChangeVersions Controller
+ *
+ * @property \App\Model\Table\PlaceChangeVersionsTable $PlaceChangeVersions
+ */
+class PlaceChangeVersionsController extends AppController
+{
 
-
-    }
-?>
+}

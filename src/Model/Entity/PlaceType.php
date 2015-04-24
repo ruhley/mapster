@@ -19,6 +19,7 @@ class PlaceType extends Entity
         'description' => true,
         'image' => true,
         'link' => true,
+        'place_change_versions' => true,
         'place_changes' => true,
         'place_type_versions' => true,
         'place_versions' => true,

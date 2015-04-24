@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class MapVersionsController extends AppController {
+/**
+ * MapVersions Controller
+ *
+ * @property \App\Model\Table\MapVersionsTable $MapVersions
+ */
+class MapVersionsController extends AppController
+{
 
-
-    }
-?>
+}

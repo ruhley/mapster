@@ -34,7 +34,7 @@
 
 		public function getAssociationNames($includeVersions = true) {
 			$associations = $this->getAssociations()->keys();
-			$response = array();
+			$response = [];
 
 			if ($includeVersions) {
 				return $associations;

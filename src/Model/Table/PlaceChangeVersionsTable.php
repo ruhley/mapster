@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Table;
 
+use App\Model\Entity\PlaceChangeVersion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -44,7 +45,7 @@ class PlaceChangeVersionsTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator instance
+     * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)

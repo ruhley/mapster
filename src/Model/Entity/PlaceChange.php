@@ -28,5 +28,6 @@ class PlaceChange extends Entity
         'map' => true,
         'place' => true,
         'event' => true,
+        'place_change_versions' => true,
     ];
 }

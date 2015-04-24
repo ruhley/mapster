@@ -21,6 +21,7 @@ class Character extends Entity
         'link' => true,
         'universe_id' => true,
         'universe' => true,
+        'character_change_versions' => true,
         'character_changes' => true,
         'character_versions' => true,
     ];

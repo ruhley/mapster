@@ -1,10 +1,14 @@
 <?php
-    namespace App\Controller;
+namespace App\Controller;
 
-    use App\Controller\AppController;
+use App\Controller\AppController;
 
-    class EventVersionsController extends AppController {
+/**
+ * EventVersions Controller
+ *
+ * @property \App\Model\Table\EventVersionsTable $EventVersions
+ */
+class EventVersionsController extends AppController
+{
 
-
-    }
-?>
+}

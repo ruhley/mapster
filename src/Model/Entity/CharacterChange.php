@@ -25,5 +25,6 @@ class CharacterChange extends Entity
         'universe' => true,
         'character' => true,
         'event' => true,
+        'character_change_versions' => true,
     ];
 }

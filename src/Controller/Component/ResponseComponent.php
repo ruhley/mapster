@@ -12,7 +12,7 @@
 				'status' => true,
 				'data' => $data,
 				'message' => $message,
-				'model' => $this->Model->getModelName(),
+				//'model' => $this->Model->getModelName(),
 				'_serialize' => ['status', 'data', 'message', 'model']
 			]);
 		}
@@ -23,7 +23,7 @@
 				'status' => false,
 				'data' => $data,
 				'message' => $message,
-				'model' => $this->Model->getModelName(),
+				//'model' => $this->Model->getModelName(),
 				'_serialize' => ['status', 'data', 'message', 'model']
 			]);
 		}

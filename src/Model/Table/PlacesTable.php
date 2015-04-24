@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Table;
 
+use App\Model\Entity\Place;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -39,12 +40,17 @@ class PlacesTable extends Table
         $this->hasMany('PlaceVersions', [
             'foreignKey' => 'place_id'
         ]);
+        $this->belongsToMany('Events', [
+            'foreignKey' => 'place_id',
+            'targetForeignKey' => 'event_id',
+            'joinTable' => 'events_places'
+        ]);
     }
 
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator instance
+     * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)

@@ -1,19 +1,22 @@
-2015-01-09 03:48:13 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mapster.mapsterentity' doesn't exist
+2015-03-24 05:33:57 Error: [PDOException] SQLSTATE[28000] [1045] Access denied for user 'my_app'@'localhost' (using password: YES)
 Stack Trace:
-#0 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'mapsterentity', Array, Object(Cake\Database\Schema\Table))
-#1 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(65): Cake\Database\Schema\Collection->describe('mapsterentity', Array)
-#2 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/ORM/Table.php(364): Cake\Database\Schema\CachedCollection->describe('mapsterentity')
-#3 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/ORM/Table.php(440): Cake\ORM\Table->schema()
-#4 /var/www/html/mapster-api/plugins/Bake/src/Shell/Task/ModelTask.php(192): Cake\ORM\Table->primaryKey()
-#5 /var/www/html/mapster-api/plugins/Bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
-#6 /var/www/html/mapster-api/plugins/Bake/src/Shell/Task/ModelTask.php(95): Bake\Shell\Task\ModelTask->bake('Mapsterentity')
-#7 [internal function]: Bake\Shell\Task\ModelTask->main('mapsterentity')
-#8 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/Shell.php(387): call_user_func_array(Array, Array)
-#9 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/Shell.php(382): Cake\Console\Shell->runCommand(Array, false)
-#10 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(200): Cake\Console\Shell->runCommand(Array, true)
-#11 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(171): Cake\Console\ShellDispatcher->_dispatch()
-#12 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(122): Cake\Console\ShellDispatcher->dispatch()
-#13 /var/www/html/mapster-api/bin/cake.php(20): Cake\Console\ShellDispatcher::run(Array)
-#14 {main}
+#0 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Driver/PDODriverTrait.php(48): PDO->__construct('mysql:host=loca...', 'my_app', 'secret', Array)
+#1 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(86): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(46): Cake\Database\Driver\Mysql->connect()
+#3 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(62): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(44): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Database/Connection.php(319): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /var/www/html/mapster-api/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(758): Cake\Database\Connection->schemaCollection()
+#8 /var/www/html/mapster-api/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(734): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /var/www/html/mapster-api/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(142): Bake\Shell\Task\ModelTask->listAll('default', false)
+#10 [internal function]: Bake\Shell\Task\ModelTask->all()
+#11 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/Shell.php(376): call_user_func_array(Array, Array)
+#12 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/Shell.php(382): Cake\Console\Shell->runCommand(Array, false)
+#13 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(200): Cake\Console\Shell->runCommand(Array, true)
+#14 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(171): Cake\Console\ShellDispatcher->_dispatch()
+#15 /var/www/html/mapster-api/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(122): Cake\Console\ShellDispatcher->dispatch()
+#16 /var/www/html/mapster-api/bin/cake.php(20): Cake\Console\ShellDispatcher::run(Array)
+#17 {main}
 
 

@@ -21,10 +21,13 @@ class Event extends Entity
         'sequence' => true,
         'chapter_id' => true,
         'chapter' => true,
+        'character_change_versions' => true,
         'character_changes' => true,
+        'event_places' => true,
         'event_versions' => true,
+        'map_change_versions' => true,
         'map_changes' => true,
+        'place_change_versions' => true,
         'place_changes' => true,
-        'universe_changes' => true,
     ];
 }
